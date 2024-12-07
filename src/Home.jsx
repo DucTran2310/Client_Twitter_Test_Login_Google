@@ -45,7 +45,7 @@ const Home = () => {
               <span>hello friend, you are logged in</span>
               <button onClick={() => handleLogout()}>Logout</button>
             </div>
-            <video src="http://localhost:8080/static/video/f331f8e7bafea3290cb00d500.mp4" controls width={500} />
+            <video src="http://localhost:8080/static/video-stream/94cf22e26805a98cfb123ad00.mp4" controls width={500} />
           </>
         ) : (
           <Link to={googleOAuthURL}>Login with Google</Link>
