@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const getGoogleAuthURL = () => {
@@ -24,9 +24,8 @@ const Home = () => {
   const [isLogin, setIsLogin] = useState(false)
 
   useEffect(() => {
-    if (Boolean(localStorage.getItem("access_token"))) {
-      setIsLogin(true)
-    } else setIsLogin(false)
+    const hasToken = localStorage.getItem("access_token")
+    setIsLogin(!!hasToken)
   }, [])
 
   const handleLogout = () => {
@@ -41,10 +40,13 @@ const Home = () => {
       <h1>Google OAuth2</h1>
       <div className="card">
         {isLogin ? (
-          <div>
-            <span>hello friend, you are logged in</span>
-            <button onClick={() => handleLogout()}>Logout</button>
-          </div>
+          <>
+            <div>
+              <span>hello friend, you are logged in</span>
+              <button onClick={() => handleLogout()}>Logout</button>
+            </div>
+            <video src="http://localhost:8080/static/video/f331f8e7bafea3290cb00d500.mp4" controls width={500} />
+          </>
         ) : (
           <Link to={googleOAuthURL}>Login with Google</Link>
         )}
